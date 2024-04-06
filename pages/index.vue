@@ -7,7 +7,7 @@
 
 <template>
   <div>
-  。。。。。。。。ppp'''
+  。。。。。。。。p/.ee.pp'''
     <h1>index</h1>
     <p>index page</p>
   </div>

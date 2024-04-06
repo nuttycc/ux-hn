@@ -4,7 +4,7 @@ import { useTimeAgo } from '@vueuse/core'
 
 const props = defineProps<{
   item: Item 
-  index: number
+  index: number | string
 }>()
 
 const timeAgo = useTimeAgo(new Date(props.item.time * 1000))
@@ -14,24 +14,25 @@ const hostname = props.item.url ? new URL(props.item.url).hostname : 'null'
 <template>
   <div v-if="!item">loading...</div>
   <div v-else class="border p-1 mb-1 flex flex-col ">
-    <div class="flex gap-2">
-      <span class="text-sm bg-green-600 text-center px-1 h-max ">{{ index + 1 }}</span>
-      <span>{{ item?.title }}</span>
+    <div class="flex gap-2 mb-1 items-baseline">
+      <span class="text-sm bg-green-600 text-center px-1 h-max ">{{ index }}</span>
+      <span class="font-semibold">{{ item?.title }}</span>
     </div>
 
-    <div class="text-sm flex gap-1 items-center">
-      <SiteFacicon :domain="hostname" />
-      <span>
-        {{ hostname }}
-      </span>
-    </div>
-    <div class="flex gap-2 text-sm">
-      <span>by {{ item?.by }}</span>
-      <p>{{ item?.score }} points</p>
-      <NuxtLink :to="`/item/${props?.item?.id}`">{{ item?.descendants }} comments</NuxtLink>
-      <span>{{ item?.id }}</span>
-      <span>{{ timeAgo }}</span>
-
+    <div class="">
+      <div class="text-sm flex gap-1 items-center">
+        <SiteFacicon :domain="hostname" />
+        <span>
+          {{ hostname }}
+        </span>
+      </div>
+      <div class="flex gap-2 text-sm">
+        <span>@{{ item?.by }}</span>
+        <p>{{ item?.score }} points</p>
+        <NuxtLink :to="`/item/${props?.item?.id}`">{{ item?.descendants }} comments</NuxtLink>
+        <span class="hidden">{{ item?.id }}</span>
+        <span>{{ timeAgo }}</span>
+      </div>
     </div>
   </div>
 </template>

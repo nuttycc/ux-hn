@@ -11,16 +11,19 @@ console.log('feed', pathFeed.value)
 <template>
   <div>
     <NuxtLoadingIndicator />
+
     <header class="border-b mb-3 mt-4">
-      <nav class="flex gap-4">
+      <nav class="pb-2 flex gap-4 justify-center overflow-x-auto">
         <NuxtLink to="/">Index</NuxtLink>
 
         <NuxtLink v-for="feed in validFeeds" :key="feed" :to="`/${feed}`" :class="{active: pathFeed == feed}">
           {{ feed }}
         </NuxtLink>
+
+        <ToggleTheme />
       </nav>
     </header>
-    <main class="md:w-[60vw] border mx-auto mb-40">
+    <main class="w-[96vw] md:w-[60vw] border mx-auto mb-40">
       <NuxtPage />
     </main>
   </div>
@@ -28,7 +31,7 @@ console.log('feed', pathFeed.value)
 
 <style>
 :root {
-  font-family: Inter;
+  font-family: Inter, Robot;
 }
 
 main {
@@ -40,5 +43,13 @@ main {
   text-decoration: underline;
 }
 
+.border {
+  border-color:gray;
+  border-radius: 2px;
+}
+
+.dark .border {
+  border-color: #747474;
+}
 
 </style>

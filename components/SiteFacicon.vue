@@ -38,4 +38,8 @@ const nextUrl = () => {
     vertical-align: middle;
   }
 
+  img.dark {
+    filter: grayscale(50%) invert(100%) brightness(95%) hue-rotate(180deg)
+  }
+
 </style>
