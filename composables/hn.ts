@@ -1,4 +1,5 @@
 import type { WritableComputedOptions } from "vue";
+import { NumberPerPage } from "~/server/constants";
 import type { Item } from "~/types/hn";
 
 export interface HnStore {

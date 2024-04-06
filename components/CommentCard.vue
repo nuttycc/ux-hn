@@ -26,6 +26,7 @@ const borderColor = [
     <article :class="`p-2 leading-7 border-l-2 ${borderColor[deep]}`">
       <header class="flex gap-2">
         <h3>{{ props.comment?.by }}</h3>
+        <span>{{ comment?.id }}</span>
         <time>{{ timeAgo }}</time>
         <span>{{ deep }}</span>
       </header>

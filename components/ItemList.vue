@@ -11,9 +11,9 @@ const props = defineProps<{
 <template>
   <div>
     <p v-if="!items">Faild!</p>
-    <ul v-else class="flex flex-col gap-2">
-      <li v-for="item in props.items " :key="item.id" class="border">
-        <ItemCard :item="item" />
+    <ul v-else class="flex flex-col gap-1">
+      <li v-for="(item, i) in props.items " :key="item.id">
+        <ItemCard :item="item" :index="i" />
       </li>
     </ul>
   </div>

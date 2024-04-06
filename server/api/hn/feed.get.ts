@@ -3,7 +3,6 @@
 
 import { HN_BASE_URL, NumberPerPage } from "~/server/constants"
 import { fetchItem } from "./item.get"
-import { Item } from "~/types/hn"
 
 const feedParams = {
   top: "topstories",
@@ -19,7 +18,7 @@ const feedParams = {
 async function fetchFeed(feed: keyof typeof feedParams, page: number=1, withComments: boolean=false): Promise<any[]> {
   const ids = await $fetch(`${HN_BASE_URL}/${feedParams[feed]}.json`) as number[]
   const start = (page - 1) * NumberPerPage
-  const end = start + NumberPerPage
+  const end = page * NumberPerPage
   const items = await Promise.all(ids.slice(start, end).map((id: number) => fetchItem(id, withComments))) 
 
   return items
