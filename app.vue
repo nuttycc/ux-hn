@@ -21,6 +21,7 @@ console.log('feed', pathFeed.value)
         </NuxtLink>
 
         <ToggleTheme />
+        <NuxtLink to="/settings">settings</NuxtLink>
       </nav>
     </header>
     <main class="w-[96vw] md:w-[60vw] border mx-auto mb-40">
