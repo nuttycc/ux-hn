@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Item } from '~/types/hn';
+import type { Item } from '~/types/hn'
 import { useTimeAgo } from '@vueuse/core'
 
 const props = defineProps<{
-  item: Item 
+  item: Item
   index: number | string
 }>()
 
@@ -13,9 +13,9 @@ const hostname = props.item.url ? new URL(props.item.url).hostname : 'null'
 
 <template>
   <div v-if="!item">loading...</div>
-  <div v-else class="border p-1 mb-1 flex flex-col ">
+  <div v-else class="border p-1 mb-1 flex flex-col">
     <div class="flex gap-2 mb-1 items-baseline">
-      <span class="text-sm bg-green-600 text-center px-1 h-max ">{{ index }}</span>
+      <span class="text-sm bg-green-600 text-center px-1 h-max">{{ index }}</span>
       <span class="font-semibold">{{ item?.title }}</span>
     </div>
 
@@ -46,5 +46,4 @@ a {
 a:hover {
   color: blue;
 }
-
 </style>

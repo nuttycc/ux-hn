@@ -1,12 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    '@vueuse/nuxt',
-    '@nuxtjs/google-fonts',
-    '@nuxt/ui',
-  ],
+  modules: ['@vueuse/nuxt', '@nuxtjs/google-fonts', '@nuxt/ui'],
   colorMode: {
-    classSuffix:''
+    classSuffix: ''
   },
   tailwindcss: {
     editorSupport: true
@@ -30,7 +26,7 @@ export default defineNuxtConfig({
       Inter: '200..700',
       'Crimson Pro': {
         wght: '200..900',
-        ital: '200..700',
+        ital: '200..700'
       }
     }
   }

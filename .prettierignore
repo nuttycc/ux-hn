@@ -1,0 +1,39 @@
+# Ignore artifacts:
+build
+coverage
+
+
+# Ignore all log files:
+*.log
+
+# Ignore Node.js package directories:
+node_modules
+
+# Ignore Next.js build output:
+.next
+.nuxt
+.output
+
+# Ignore public folder:
+public
+
+# Ignore styles:
+*.css
+*.scss
+
+# Ignore test files:
+*.test.js
+*.test.jsx
+*.spec.js
+*.spec.jsx
+
+
+.idea/
+.vscode/
+pnpm-lock.yaml
+**/.next
+**/.out
+**/dist
+**/build
+**/.tmp
+**/.cache

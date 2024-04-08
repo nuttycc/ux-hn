@@ -1,17 +1,16 @@
-import Groq from "groq-sdk";
-import type { ChatCompletion } from "groq-sdk/resources/chat/completions.mjs";
+import Groq from 'groq-sdk'
+import type { ChatCompletion } from 'groq-sdk/resources/chat/completions.mjs'
 
-export async function getGroqChatCompletion(text: string, id:number) {
-
+export async function getGroqChatCompletion(text: string, id: number) {
   const store = useState<Record<number, ChatCompletion>>('Groqchat')
 
   const get = () => {
-    return store.value?.[id] 
+    return store.value?.[id]
   }
 
   const set = (data: any) => {
     if (!store.value) {
-      store.value = {};
+      store.value = {}
     }
     store.value[id] = data
   }
@@ -22,7 +21,7 @@ export async function getGroqChatCompletion(text: string, id:number) {
 
   let apiKey = ''
 
-    // 如果是 浏览器端，就从 localStorage 中获取 apiKey , 存储格式为："keys":{"groqKey":""}
+  // 如果是 浏览器端，就从 localStorage 中获取 apiKey , 存储格式为："keys":{"groqKey":""}
   if (typeof window !== 'undefined') {
     const keys = JSON.parse(localStorage.getItem('keys') || '{}')
     apiKey = keys?.groqKey || ''
@@ -31,30 +30,29 @@ export async function getGroqChatCompletion(text: string, id:number) {
   try {
     const groq = new Groq({
       apiKey: apiKey,
-      dangerouslyAllowBrowser:true
-    });
+      dangerouslyAllowBrowser: true
+    })
 
     const data = await groq.chat.completions.create({
-      messages:
-        [
-          {
-            role: "system",
-            content: "responde in JSON format"
-          },
-          {
-              role: "user",
-            content: `summarize and pick comments with its username, outputting in JSON format.
+      messages: [
+        {
+          role: 'system',
+          content: 'responde in JSON format'
+        },
+        {
+          role: 'user',
+          content: `summarize and pick comments with its username, outputting in JSON format.
 
           user input: [
-      {
-          "username": "jackhalford",
-          "comment": " where forces are anyway replaced with hamiltonians."
-      },
-      {
-          "username": "abnry",
-          "comment": "I have no clue about this paper. Only comment is that this was published April 1st."
-      },
-  ]
+            {
+                "username": "jackhalford",
+                "comment": " where forces are anyway replaced with hamiltonians."
+            },
+            {
+                "username": "abnry",
+                "comment": "I have no clue about this paper. Only comment is that this was published April 1st."
+            },
+          ]
               asistant response:{
                 "summary": your summary,
                 "comments": [
@@ -62,31 +60,27 @@ export async function getGroqChatCompletion(text: string, id:number) {
                     "username": jackhalford,
                     "comment": "where forces are anyway replaced with hamiltonians.",
                   },
-                      {
-          "username": "abnry",
-          "comment": "I have no clue about this paper. Only comment is that this was published April 1st."
-      },
+                  {
+                    "username": "abnry",
+                    "comment": "I have no clue about this paper. Only comment is that this was published April 1st."
+                  },
                 ]
               }
               --comments:${text}`
-          }
-        ],
-      model: "mixtral-8x7b-32768",
+        }
+      ],
+      model: 'mixtral-8x7b-32768',
       stream: false,
       response_format: {
-        type: "json_object"
+        type: 'json_object'
       }
-    });
+    })
 
-      set(data)
+    set(data)
 
     return data
-  } catch (e:any) {
+  } catch (e: any) {
     console.log('🔴 error-', e.message)
     return e.message
   }
-
-
-
 }
-

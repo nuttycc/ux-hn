@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
 const props = defineProps<{
   text: string
-  id:number
-}>() 
+  id: number
+}>()
 
 const errorMsg = ref('')
 const parsed = ref()
@@ -29,7 +28,7 @@ if (typeof chatCompletion === 'string') {
       <h2>Comments</h2>
       <ul class="flex flex-col gap-2">
         <li v-for="(item, index) in parsed.comments" :key="index">
-          <span class="underline mr-2">@{{ item.username}}:</span>
+          <span class="underline mr-2">@{{ item.username }}:</span>
           <span>{{ item.comment }}</span>
         </li>
       </ul>
@@ -39,9 +38,7 @@ if (typeof chatCompletion === 'string') {
 </template>
 
 <style scoped>
-
 li {
   list-style-type: none;
 }
-
 </style>

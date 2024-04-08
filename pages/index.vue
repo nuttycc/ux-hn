@@ -2,7 +2,6 @@
 definePageMeta({
   middleware: 'feed'
 })
-
 </script>
 
 <template>

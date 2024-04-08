@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { useStorage } from '@vueuse/core';
+import { useStorage } from '@vueuse/core'
 
 const theDefault = {
   groqKey: ''
 }
 
-const store = useStorage('keys', theDefault);
-
+const store = useStorage('keys', theDefault)
 </script>
 
 <template>
-
   <div>
     <label for="groqKey">Groq Key</label>
     <input name="groqKey" type="text" v-model="store.groqKey" />
@@ -24,5 +22,4 @@ input {
   margin: 0.5rem 0;
   width: 100%;
 }
-
 </style>

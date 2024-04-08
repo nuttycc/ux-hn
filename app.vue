@@ -1,7 +1,6 @@
 <script setup lang="ts">
-
 useHead({
-  titleTemplate: (title) => title ? `${title} - HN` : 'HN',
+  titleTemplate: (title) => (title ? `${title} - HN` : 'HN')
 })
 
 const route = useRoute()
@@ -14,9 +13,12 @@ console.log('feed', pathFeed.value)
 
     <header class="border-b mb-3 mt-4">
       <nav class="pb-2 flex gap-4 justify-center overflow-x-auto">
-        <NuxtLink to="/">Index</NuxtLink>
-
-        <NuxtLink v-for="feed in validFeeds" :key="feed" :to="`/${feed}`" :class="{active: pathFeed == feed}">
+        <NuxtLink
+          v-for="feed in validFeeds"
+          :key="feed"
+          :to="`/${feed}`"
+          :class="{ active: pathFeed == feed }"
+        >
           {{ feed }}
         </NuxtLink>
 
@@ -45,12 +47,11 @@ main {
 }
 
 .border {
-  border-color:gray;
+  border-color: gray;
   border-radius: 2px;
 }
 
 .dark .border {
   border-color: #747474;
 }
-
 </style>

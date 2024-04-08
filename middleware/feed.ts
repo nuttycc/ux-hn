@@ -1,4 +1,4 @@
-import { validFeeds } from "~/composables/hn"
+import { validFeeds } from '~/composables/hn'
 
 export default defineNuxtRouteMiddleware((from) => {
   if (!from.params.feed || !validFeeds.includes(from.params.feed as string)) {

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const route = useRoute()
 const id = computed(() => +route.params.id || 1)
 
@@ -12,8 +11,8 @@ const toSummary = computed(() => {
   //{"":""}
   const newObj = comments.value?.map((item) => {
     return {
-      "username": item.by,
-      "comment": item.text
+      username: item.by,
+      comment: item.text
     }
   })
 
@@ -31,7 +30,7 @@ console.log('tosummary-', toSummary.value)
       <div v-if="!item">item is undefined</div>
       <ItemCard v-else :item="item" index="✨" />
     </div>
-    <button @click="() => show = !show">{{ show ? 'close': "open" }}</button>
+    <button @click="() => (show = !show)">{{ show ? 'close' : 'open' }}</button>
 
     <Suspense v-if="show">
       <SummaryCard :text="`${toSummary?.slice(0, 20).toString()}`" :id="id" />
