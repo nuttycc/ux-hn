@@ -7,7 +7,7 @@ definePageMeta({
 
 <template>
   <div>
-    <h1>index</h1>
+    <h1>index nn</h1>
     <p>index page</p>
   </div>
 </template>

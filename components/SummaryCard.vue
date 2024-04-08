@@ -5,20 +5,22 @@ const props = defineProps<{
   id:number
 }>() 
 
-
+const errorMsg = ref('')
+const parsed = ref()
 const chatCompletion = await getGroqChatCompletion(props.text, props.id)
 
-const raw = chatCompletion.choices[0].message?.content
-console.log('chatCompletion', raw)
-
-
-const parsed = JSON.parse(raw)
-
-
+if (typeof chatCompletion === 'string') {
+  errorMsg.value = chatCompletion
+} else {
+  const raw = chatCompletion.choices[0].message?.content
+  console.log('chatCompletion', raw)
+  parsed.value = JSON.parse(raw)
+}
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
+  <div v-if="errorMsg">{{ errorMsg }}</div>
+  <div v-else class="flex flex-col gap-4">
     <div>
       <h2>Summary</h2>
       <p>{{ parsed.summary }}</p>

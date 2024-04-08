@@ -29,7 +29,7 @@ const nextUrl = () => {
 
 <template>
   <span class="inline-block ">
-    <img alt="favicon" loading="lazy" :src="faviconUrl" @error="nextUrl" style="width:0.9rem; height:0.9rem;" />
+    <img class="dark:invert" alt="favicon" loading="lazy" :src="faviconUrl" @error="nextUrl" style="width:0.9rem; height:0.9rem;" />
   </span>
 </template>
 
@@ -38,8 +38,8 @@ const nextUrl = () => {
     vertical-align: middle;
   }
 
-  img.dark {
+  /* img.dark {
     filter: grayscale(50%) invert(100%) brightness(95%) hue-rotate(180deg)
-  }
+  } */
 
 </style>
