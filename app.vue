@@ -11,7 +11,7 @@ console.log('feed', pathFeed.value)
   <div>
     <NuxtLoadingIndicator />
 
-    <header class="border-b mb-3 mt-4">
+    <header class="border-b mb-3 mt-4 px-2">
       <nav class="pb-2 flex gap-4 justify-center overflow-x-auto">
         <NuxtLink
           v-for="feed in validFeeds"

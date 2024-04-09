@@ -14,7 +14,7 @@ const feedParams = {
   best: 'beststories',
   ask: 'askstories',
   show: 'showstories',
-  job: 'jobstories'
+  // job: 'jobstories'
 }
 
 export const validFeeds = Object.keys(feedParams)
