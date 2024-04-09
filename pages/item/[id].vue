@@ -15,11 +15,11 @@ const toSummary = computed(() => {
       comment: item.text
     }
   })
+  console.log('tosummary-', JSON.stringify(newObj))
 
   return newObj || []
 })
 
-console.log('tosummary-', toSummary.value)
 </script>
 
 <template>
@@ -30,10 +30,10 @@ console.log('tosummary-', toSummary.value)
       <div v-if="!item">item is undefined</div>
       <ItemCard v-else :item="item" index="✨" />
     </div>
-    <button @click="() => (show = !show)">{{ show ? 'close' : 'open' }}</button>
+    <button @click="() => (show = !show)">{{ show ? '🤖close' : '🤖open' }}</button>
 
     <Suspense v-if="show">
-      <SummaryCard :text="`${toSummary?.slice(0, 20).toString()}`" :id="id" />
+      <SummaryCard :text="`${JSON.stringify(toSummary?.slice(0, 20))}`" :id="id" class="text-sm leading-6 indent-2" />
       <template #fallback>loading</template>
     </Suspense>
     <div class="m-2 mt-8 border-y">

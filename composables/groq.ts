@@ -33,40 +33,21 @@ export async function getGroqChatCompletion(text: string, id: number) {
       dangerouslyAllowBrowser: true
     })
 
+    console.log('🔷 text--', text)
     const data = await groq.chat.completions.create({
       messages: [
         {
           role: 'system',
-          content: 'responde in JSON format'
+          content: 'responde in JSON format and Chinese Language!'
         },
         {
           role: 'user',
-          content: `summarize and pick comments with its username, outputting in JSON format.
-
-          user input: [
-            {
-                "username": "jackhalford",
-                "comment": " where forces are anyway replaced with hamiltonians."
-            },
-            {
-                "username": "abnry",
-                "comment": "I have no clue about this paper. Only comment is that this was published April 1st."
-            },
-          ]
-              asistant response:{
-                "summary": your summary,
-                "comments": [
-                  {
-                    "username": jackhalford,
-                    "comment": "where forces are anyway replaced with hamiltonians.",
-                  },
-                  {
-                    "username": "abnry",
-                    "comment": "I have no clue about this paper. Only comment is that this was published April 1st."
-                  },
-                ]
+          content: `summarize {input} in Chinese, outputting in JSON format.
+              exapmle output:{
+                "summary": your chinese summary,
               }
-              --comments:${text}`
+              --input: ${text}
+            `
         }
       ],
       model: 'mixtral-8x7b-32768',
