@@ -2,22 +2,21 @@
 useHead({
   titleTemplate: (title) => (title ? `${title} - HN` : 'HN')
 })
-
 const route = useRoute()
 const pathFeed = computed(() => route.params.feed as string)
-console.log('feed', pathFeed.value)
+
 </script>
 <template>
   <div>
     <NuxtLoadingIndicator />
-
     <header class="border-b mb-3 mt-4">
       <nav class="pb-2 flex gap-2 justify-center items-center overflow-x-auto">
-        <NuxtLink v-for="feed in validFeeds" :key="feed" :to="`/${feed}`" :class="`${{ active: pathFeed == feed }}`">
+        <NuxtLink v-for="feed in validFeeds" :key="feed" :to="`/${feed}`" :class="{ active: pathFeed == feed }">
           {{ feed }}
         </NuxtLink>
 
         <ToggleTheme />
+
         <NuxtLink to="/settings">
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
             <path fill="currentColor"
@@ -26,9 +25,12 @@ console.log('feed', pathFeed.value)
         </NuxtLink>
       </nav>
     </header>
-    <main class="w-[96vw] md:w-[60vw] border mx-auto mb-40">
+    <main class="w-[96vw] md:w-[60vw] border mx-auto my-4">
       <NuxtPage />
     </main>
+    <footer class="align-center text-center mb-4">
+      Powered by Nuxt
+    </footer>
   </div>
 </template>
 
@@ -36,14 +38,14 @@ console.log('feed', pathFeed.value)
 :root {
   font-family: Inter, Robot;
 }
-
-main {
+body {
   min-height: 100vh;
 }
 
 .active {
-  color: blue;
-  text-decoration: underline;
+  color: #C9B86A;
+  /* text-decoration: underline; */
+  transition: color 0.2s ease;
 }
 
 .border {

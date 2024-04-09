@@ -30,10 +30,19 @@ const borderColor = [
         <span>{{ comment?.id }}</span>
         <time>{{ timeAgo }}</time>
       </header>
-      <div v-html="props.comment?.text" class="flex flex-col gap-2 indent-4"></div>
+      <div v-html="props.comment?.text" class="text flex flex-col gap-2 indent-4 break-words text-wrap"></div>
     </article>
     <div v-if="comment?.comments" class="ml-4">
       <CommentList :comments="comment.comments" :deep="deep + 1" />
     </div>
   </div>
 </template>
+
+<style>
+
+.text a{
+  text-decoration: underline ;
+  color: #3845FF;
+}
+
+</style>

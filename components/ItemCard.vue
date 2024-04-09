@@ -20,14 +20,12 @@ const hostname = props.item.url ? new URL(props.item.url).hostname : 'null'
     </div>
 
     <div class="">
-      <div class="text-sm flex gap-1 items-center">
+      <div class="text-sm flex gap-1 mb-[1px] items-center">
         <SiteFacicon :domain="hostname" />
-        <span>
-          {{ hostname }}
-        </span>
+        <span>{{ hostname }}</span>
+        <span>@{{ item?.by }}</span>
       </div>
       <div class="flex gap-2 text-sm">
-        <span>@{{ item?.by }}</span>
         <p>{{ item?.score }} points</p>
         <NuxtLink :to="`/item/${props?.item?.id}`">{{ item?.descendants }} comments</NuxtLink>
         <span class="hidden">{{ item?.id }}</span>
