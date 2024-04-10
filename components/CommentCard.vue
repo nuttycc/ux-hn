@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <script setup lang="ts">
 import { useTimeAgo } from '@vueuse/core'
 import type { Item } from '~/types/hn'
@@ -30,7 +31,7 @@ const borderColor = [
         <span>{{ comment?.id }}</span>
         <time>{{ timeAgo }}</time>
       </header>
-      <div v-html="props.comment?.text" class="flex flex-col gap-2 indent-4"></div>
+      <div class="text flex flex-col gap-2 indent-4 break-words text-wrap" v-html="props.comment?.text"/>
     </article>
     <div v-if="comment?.comments" class="ml-4">
       <CommentList :comments="comment.comments" :deep="deep + 1" />

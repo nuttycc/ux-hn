@@ -9,10 +9,6 @@
   </div>
 </template>
 
-<script setup>
-const colorMode = useColorMode()
-</script>
-
 <style>
 body {
   background-color: #fff;

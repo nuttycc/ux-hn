@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@nuxtjs/google-fonts', '@nuxt/ui'],
+  modules: ['@vueuse/nuxt', '@nuxtjs/google-fonts', '@nuxt/ui', '@nuxt/eslint'],
   colorMode: {
     classSuffix: ''
   },

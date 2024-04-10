@@ -3,6 +3,7 @@
 
 import { HN_BASE_URL, NumberPerPage } from '~/server/constants'
 import { fetchItem } from './item.get'
+import type { Item } from '~/types/hn'
 
 const feedParams = {
   top: 'topstories',
@@ -19,7 +20,7 @@ async function fetchFeed(
   feed: keyof typeof feedParams,
   page: number = 1,
   withComments: boolean = false
-): Promise<any[]> {
+): Promise<Item[]> {
   const ids = (await $fetch(`${HN_BASE_URL}/${feedParams[feed]}.json`)) as number[]
   const start = (page - 1) * NumberPerPage
   const end = page * NumberPerPage
@@ -51,7 +52,7 @@ export default defineEventHandler(async (event) => {
   }
   const key = `${feed}-${page}-${withComments}`
   const now = Math.round(Date.now() / 1000)
-  const cache = (await useStorage().getItem(key)) as { items: any[]; createdAt: number } | undefined
+  const cache = (await useStorage().getItem(key)) as { items: Item[]; createdAt: number } | undefined
   if (cache && cache.createdAt + 10 * 60 > now) {
     console.log('☑️ feed use cache')
     return cache.items
