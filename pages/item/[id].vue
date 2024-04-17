@@ -33,7 +33,7 @@ const toSummary = computed(() => {
     <button @click="() => (show = !show)">{{ show ? '🤖close' : '🤖open' }}</button>
 
     <Suspense v-if="show">
-      <SummaryCard :text="`${JSON.stringify(toSummary?.slice(0, 20))}`" :id="id" class="text-sm leading-6 indent-2" />
+      <SummaryCard :id="id" :text="`${JSON.stringify(toSummary?.slice(0, 20))}`" class="text-sm leading-6 indent-2" />
       <template #fallback>loading</template>
     </Suspense>
     <div class="m-2 mt-8 border-y">

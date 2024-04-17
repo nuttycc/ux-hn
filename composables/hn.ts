@@ -1,5 +1,4 @@
 import type { WritableComputedOptions } from 'vue'
-import { NumberPerPage } from '~/server/constants'
 import type { Item } from '~/types/hn'
 
 export interface HnStore {
@@ -109,7 +108,7 @@ async function reactiveLoad<T>(
     }
   }
 
-  if (process.client) {
+  if (import.meta.client) {
     console.log('🔵 client task...')
     task()
   } else {

@@ -1,5 +1,5 @@
 import { HN_BASE_URL } from '~/server/constants'
-import { Item } from '~/types/hn'
+import type { Item } from '~/types/hn'
 
 interface CacheItem extends Item {
   createdAt: number // 秒

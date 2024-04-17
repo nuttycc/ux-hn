@@ -11,7 +11,7 @@ const store = useStorage('keys', theDefault)
 <template>
   <div>
     <label for="groqKey">Groq Key</label>
-    <input name="groqKey" type="text" v-model="store.groqKey" />
+    <input v-model="store.groqKey" name="groqKey" type="text" >
   </div>
 </template>
 

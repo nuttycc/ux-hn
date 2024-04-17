@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prettier": "prettier --write ."
   },
   "dependencies": {
@@ -17,7 +19,9 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@nuxt/eslint": "^0.3.4",
     "@nuxtjs/google-fonts": "^3.2.0",
+    "eslint": "^9.0.0",
     "prettier": "3.2.5"
   }
 }

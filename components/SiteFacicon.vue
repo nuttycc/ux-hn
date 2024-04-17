@@ -32,9 +32,9 @@ const nextUrl = () => {
       alt="favicon"
       loading="lazy"
       :src="faviconUrl"
-      @error="nextUrl"
       style="width: 0.9rem; height: 0.9rem"
-    />
+      @error="nextUrl"
+    >
   </span>
 </template>
 
