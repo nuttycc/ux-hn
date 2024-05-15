@@ -87,18 +87,23 @@ async function reactiveLoad<T>(
   } as WritableComputedOptions<T | undefined>)
 
   const loading = ref(false)
-
-  if (data.value == null) {
+  
+  if (!data.value) {
     if (init != null) {
       data.value = init
     }
+  } else {
+    loading.value = false
+    return reactive({
+      loading,
+      data
+    })
   }
 
   const task = async () => {
     try {
       loading.value = true
       const fetched = await fetch()
-      console.log('🎉 task end!')
       data.value = fetched
     } catch (e) {
       console.error(e)
@@ -109,10 +114,8 @@ async function reactiveLoad<T>(
   }
 
   if (import.meta.client) {
-    console.log('🔵 client task...')
     task()
   } else {
-    console.log('🟤 server task start...')
     await task()
   }
 

@@ -1,3 +1,4 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <script setup lang="ts">
 const route = useRoute()
 const id = computed(() => +route.params.id || 1)
@@ -20,12 +21,31 @@ const toSummary = computed(() => {
   return newObj || []
 })
 
+const addHashOnBack = () => {
+  window.onpopstate = (event) => {
+    if (event.state) {
+      const curUrl = new URL(window.location.href)
+      if(!curUrl.hash) {
+        curUrl.hash = `#${id.value}`
+        history.replaceState(history.state, '', curUrl.toString())
+      }
+      
+    }
+  }
+}
+
+
+
+onMounted(() => {
+  addHashOnBack()
+})
+
 </script>
 
 <template>
   <div class="dark:bg-slate-800">
-    <p v-if="loading">loading...</p>
-    <p v-else-if="!loading && !comments">Failed!</p>
+    <!-- <p v-if="loading">loading...</p> -->
+    <!-- <p v-else-if="!loading && !comments">Failed!</p> -->
     <div class="m-1">
       <div v-if="!item">item is undefined</div>
       <ItemCard v-else :item="item" index="✨" />
@@ -41,3 +61,8 @@ const toSummary = computed(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+
+
+</style>

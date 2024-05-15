@@ -9,7 +9,7 @@ const props = defineProps<{
 
 <template>
   <div>
-    <div v-if="!comments">loading...</div>
+    <div v-if="!comments" >Loading...</div>
     <ul v-else class="flex flex-col gap-2">
       <li v-for="comment in props.comments" :key="comment.id" class="">
         <CommentCard :comment="comment" :deep="deep" />

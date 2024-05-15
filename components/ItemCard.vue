@@ -9,17 +9,20 @@ const props = defineProps<{
 
 const timeAgo = useTimeAgo(new Date(props.item.time * 1000))
 const hostname = props.item.url ? new URL(props.item.url).hostname : 'null'
+
+
+
 </script>
 
 <template>
   <div v-if="!item">loading...</div>
-  <div v-else class="border p-1 mb-1 flex flex-col">
+  <div v-else :id="`${item.id}`" class="item-card border p-1 mb-1 flex flex-col min-h-16 min-w-32">
     <div class="flex gap-2 mb-1 items-baseline">
       <span class="text-sm bg-green-600 text-center px-1 h-max">{{ index }}</span>
       <a :href="item.url" class="font-semibold">{{ item?.title }}</a>
     </div>
 
-    <div class="">
+    <div class="min-h-8 min-w-16">
       <div class="text-sm flex gap-1 mb-[1px] items-center">
         <SiteFacicon :domain="hostname" />
         <span>{{ hostname }}</span>
@@ -43,4 +46,6 @@ a {
 a:hover {
   color: blue;
 }
+
+
 </style>
